@@ -28,11 +28,17 @@ console.log(processFirstItem(['foo', 'bar'], (str) => str + str));
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2?  
  * 
+ * counter1 stores count inside the function so it is only available at the function level, counter 2 stores it outside the function which increases it's scope.
+ *   
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter2 has closure because the let statement is available outside of the function at a higher level.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * counter1 would be preferable if you were never going to use count for anything at the global level and counter2 would be preferable because its less code.
  *
 */
 
@@ -43,8 +49,12 @@ function counterMaker() {
    return count++;
   }
 }
-
 const counter1 = counterMaker();
+console.log(counter1());
+console.log(counter1());
+console.log(counter1());
+console.log(counter1());
+
 
 // counter2 code
 let count = 0;
@@ -52,18 +62,22 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
+console.log(count)
+console.log(counter2());
+console.log(counter2());
+console.log(counter2());
+console.log(counter2());
 
 /* Task 2: inning() 
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(maximum){
 
-    /*Code Here*/
-
+  let points = Math.floor(Math.random() * Math.floor(maximum));
+  return points;
 }
-
+console.log(inning(3));
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
