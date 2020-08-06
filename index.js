@@ -94,11 +94,11 @@ finalScore(inning, 9) might return:
 
 */ 
 
-
+let Home = 0;
+let Away = 0;
 
 function finalScore(inning, numOfInnings) {
-  let Home = 0;
-  let Away = 0;
+
       function inning(maximum){
         points = Math.floor(Math.random() * Math.floor(maximum));
         return points;
@@ -135,8 +135,8 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-let Home = 0;
-let Away = 0;
+Home = 0;
+Away = 0;
 
 function getInningScore(inning, numOfInnings) {
       function inning(maximum){
