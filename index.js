@@ -74,10 +74,12 @@ Write a function called `inning` that returns a random number of points that a t
 
 function inning(maximum){
 
-  let points = Math.floor(Math.random() * Math.floor(maximum));
+  points = Math.floor(Math.random() * Math.floor(maximum));
   return points;
+
 }
 console.log(inning(3));
+
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -92,11 +94,25 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
 
-  /*Code Here*/
 
+function finalScore(inning, numOfInnings) {
+  let Home = 0;
+  let Away = 0;
+      function inning(maximum){
+        points = Math.floor(Math.random() * Math.floor(maximum));
+        return points;
+      }
+      for (i = 0; i < numOfInnings; i++) {
+        console.log("This is inning " + (i + 1));
+        var score = {};
+        score.home = Home += inning(3);
+        score.away = Away += inning(3);
+        console.log(score);
+  }
+  return score;
 }
+console.log("This is the final score", finalScore(inning(3), 9));
 
 /* Task 4: 
 
@@ -119,8 +135,31 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+let Home = 0;
+let Away = 0;
 
+function getInningScore(inning, numOfInnings) {
+      function inning(maximum){
+        points = Math.floor(Math.random() * Math.floor(maximum));
+        return points;
+      }
+      for (i = 0; i < numOfInnings; i++) {
+        let inningInGame = (i + 1);
+        var score = {};
+        score.home = Home += inning(3);
+        score.away = Away += inning(3);
+        if (inningInGame === 1){
+          console.log(`${inningInGame}st inning: ${score.away} - ${score.home}`);
+        } else if (inningInGame === 2) {
+          console.log(`${inningInGame}nd inning: ${score.away} - ${score.home}`);
+        } else if (inningInGame === 3) {
+          console.log(`${inningInGame}rd inning: ${score.away} - ${score.home}`);
+        } else if (inningInGame >= 4) {
+          console.log(`${inningInGame}th inning: ${score.away} - ${score.home}`);
+        }
+      }
+      console.log(`Final Score: ${score.away} - ${score.home}`);
+  return score;
+}
+console.log(getInningScore(inning(3), 9));
 
